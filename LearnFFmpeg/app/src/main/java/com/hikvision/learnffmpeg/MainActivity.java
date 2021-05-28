@@ -26,6 +26,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    //运行时权限
     private static final int PERMISSION_REQUEST_CODE = 1;
     private static final String[] REQUEST_PERMISSIONS = {
             Manifest.permission.CAMERA,
@@ -34,43 +35,19 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private int mSampleSelectedIndex = -1;
-
     private static final int FF_ANATIVE_WINDOWS_EXAMPLE = 0;
-    private static final int FF_OPENGLES_EXAMPLE = 1;
-    private static final int FF_OPENGLES_AUDIO_VISUAL_EXAMPLE = 2;
-    private static final int FF_OPENGLES_VR_EXAMPLE = 3;
-    private static final int FF_X264_VIDEO_RECORDER = 4;
-    private static final int FF_FDK_AAC_AUDIO_RECORDER = 5;
-    private static final int FF_AV_RECORDER = 6;
-    private static final int FF_STREAM_MEDIA_PLAYER = 7;
-
     private static  final String [] EXAMPLE_LIST = {
             "FFmpeg + ANativeWindow player",
-            "FFmpeg + OpenGL ES player",
-            "FFmpeg + OpenSL ES visual audio player",
-            "FFmpeg + OpenGL ES VR player",
-            "FFmpeg + single video recorder",
-            "FFmpeg + single audio recorder",
-            "FFmpeg + AV recorder",
-            "FFmpeg + stream media player"
     };
-
 
     @Override
     protected void onResume() {
         super.onResume();
+        //申请得到运行时权限
         if (!hasPermissionsGranted(REQUEST_PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, REQUEST_PERMISSIONS, PERMISSION_REQUEST_CODE);
         }
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ((TextView)findViewById(R.id.text_view)).setText("FFmpeg 版本和编译配置信息\n\n" + FFMediaPlayer.GetFFmpegVersion());
-    }
-
     protected boolean hasPermissionsGranted(String[] permissions) {
         for (String permission : permissions) {
             if (ActivityCompat.checkSelfPermission(this, permission)
@@ -91,17 +68,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        //获取FFmpeg的版本信息
+        ((TextView)findViewById(R.id.text_view)).setText("FFmpeg 版本和编译配置信息\n\n" + FFMediaPlayer.GetFFmpegVersion());
+    }
+
+
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        /**
+         * 此方法用于初始化菜单，其中menu参数就是即将要显示的Menu实例。 返回true则显示该menu,false 则不显示;
+         * (只会在第一次初始化菜单时调用) Inflate the menu; this adds items to the action bar
+         * if it is present.
+         */
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
+        /**
+         * 菜单项被点击时调用，也就是菜单项的监听方法。
+         * 通过这几个方法，可以得知，对于Activity，同一时间只能显示和监听一个Menu 对象。 TODO Auto-generated
+         * method stub
+         */
+         int id = item.getItemId();
         if (id == R.id.action_change_sample) {
             showSelectExampleDialog();
         }
@@ -109,24 +102,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showSelectExampleDialog() {
+        //创建一个对话框
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        //创建一个sample_selected_layout 的inflater
         LayoutInflater inflater = LayoutInflater.from(this);
         final View rootView = inflater.inflate(R.layout.sample_selected_layout, null);
-
-        final AlertDialog dialog = builder.create();
-
-        Button confirmBtn = rootView.findViewById(R.id.confirm_btn);
-        confirmBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
+        //配置recycleview 和对应adapter 绑定
         final RecyclerView resolutionsListView = rootView.findViewById(R.id.resolution_list_view);
-
         final MyRecyclerViewAdapter myPreviewSizeViewAdapter = new MyRecyclerViewAdapter(this, Arrays.asList(EXAMPLE_LIST));
+        resolutionsListView.setAdapter(myPreviewSizeViewAdapter);
+        //标签在最上面
         myPreviewSizeViewAdapter.setSelectIndex(mSampleSelectedIndex);
+        resolutionsListView.scrollToPosition(mSampleSelectedIndex);
+        //设置为竖排列
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        resolutionsListView.setLayoutManager(manager);
+        //recycleview 与dialog 绑定
+        dialog.show();
+        dialog.getWindow().setContentView(rootView);
+
         myPreviewSizeViewAdapter.addOnItemClickListener(new MyRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -142,20 +138,24 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         break;
                 }
-
                 dialog.cancel();
             }
         });
 
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        resolutionsListView.setLayoutManager(manager);
+        Button confirmBtn = rootView.findViewById(R.id.confirm_btn);
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
 
-        resolutionsListView.setAdapter(myPreviewSizeViewAdapter);
-        resolutionsListView.scrollToPosition(mSampleSelectedIndex);
 
-        dialog.show();
-        dialog.getWindow().setContentView(rootView);
+
+
+
+
+
 
     }
 }
