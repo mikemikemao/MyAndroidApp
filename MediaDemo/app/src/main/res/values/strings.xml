@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MediaDemo</string>
     <string name="err_permission">Permission Error</string>
+    <string name="btn_showImg">showImg</string>
+    <string name="btn_showSVImg">showSVImg</string>
+    <string name="btn_showVImg">showVImg</string>
 </resources>

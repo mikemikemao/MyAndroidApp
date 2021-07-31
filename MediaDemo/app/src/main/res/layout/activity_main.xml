@@ -20,6 +20,23 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"/>
 
+    <Button
+        android:id="@+id/btn_showImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_showImg" />
+
+    <Button
+        android:id="@+id/btn_showSVImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_showSVImg" />
+
+    <Button
+        android:id="@+id/btn_show_VImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_showVImg" />
 
 
 </LinearLayout>

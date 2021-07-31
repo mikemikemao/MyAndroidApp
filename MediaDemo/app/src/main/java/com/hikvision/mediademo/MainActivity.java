@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.SurfaceHolder;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "pirate";
     ImageView iv;
 
+    Button btn_showImg;
+    Button btn_showSVImg;
+    Button btn_showVImg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +40,32 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        btn_showImg=(Button)findViewById(R.id.btn_showImg);
+        btn_showSVImg=(Button)findViewById(R.id.btn_showSVImg);
+        btn_showVImg=(Button)findViewById(R.id.btn_show_VImg);
 
-        Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getPath() +
-                File.separator + "11.jpg");
-        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
-        iv=(ImageView)findViewById(R.id.imageView);
-        iv.setImageBitmap(bitmap);
+        btn_showImg.setOnClickListener(v -> {
+            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getPath() +
+                    File.separator + "11.jpg");
+            //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
+            iv=(ImageView)findViewById(R.id.imageView);
+            iv.setImageBitmap(bitmap);
+        });
 
+        btn_showSVImg.setOnClickListener(v -> {
+            
+        });
+
+        btn_showVImg.setOnClickListener(v -> {
+            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getPath() +
+                    File.separator + "11.jpg");
+            //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
+            iv=(ImageView)findViewById(R.id.imageView);
+            iv.setImageBitmap(bitmap);
+        });
 
     }
+
+
+
 }
