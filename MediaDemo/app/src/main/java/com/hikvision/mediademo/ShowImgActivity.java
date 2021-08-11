@@ -30,21 +30,15 @@ public class ShowImgActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showimglayout);
-        Intent i = getIntent();
-        Log.d(TAG, "onCreate: "+i.getAction());
-        if (CheckPermissionActivity.jump2PermissionActivity(this, i != null ? i.getAction() : null)) {
-            finish();
-            return;
-        }
+
         btn_showImg=(Button)findViewById(R.id.btn_showImg);
         btn_showSVImg=(Button)findViewById(R.id.btn_showSVImg);
         btn_showVImg=(Button)findViewById(R.id.btn_show_VImg);
 
-
         btn_showImg.setOnClickListener(v -> {
-            //Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getPath() +
-             //       File.separator + "11.jpg");
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
+            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getPath() +
+                    File.separator + "11.jpg");
+            //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
             iv=(ImageView)findViewById(R.id.imageView);
             iv.setImageBitmap(bitmap);
         });

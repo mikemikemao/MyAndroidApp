@@ -4,8 +4,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -16,9 +18,9 @@ import com.hikvision.mediademo.R;
 public class CheckPermissionActivity extends Activity {
     private final int REQUEST_CODE_ASK_PERMISSIONS = 124;
     private static final String[] REQUEST_PERMISSIONS = new String[]{
-            //Manifest.permission.MANAGE_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
+//            Manifest.permission.MANAGE_EXTERNAL_STORAGE,
 //            Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.RECORD_AUDIO
     };
@@ -26,8 +28,18 @@ public class CheckPermissionActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            // new一个intent转到系统设置界面
+//            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+//            intent.setData(Uri.parse("package:" + getPackageName()));
+//            // 1024为REQUEST_CODE
+//            startActivityForResult(intent, 1024);
+//        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+            intent.setData(Uri.parse("package:" + this.getPackageName()));
+            // 1024为REQUEST_CODE
+            startActivityForResult(intent, 1024);
             requestPermissions(REQUEST_PERMISSIONS, REQUEST_CODE_ASK_PERMISSIONS);
         }
     }

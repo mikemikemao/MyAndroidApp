@@ -8,6 +8,7 @@
     <string name="btn_showVImg">showVImg</string>
     <string name="btn_playRecord">playRecord</string>
     <string name="btn_cancelRecord">cancelRecord</string>
+    <string name="btn_capSoRecord">capSoRecord</string>
     <string name="text_result">Result</string>
     <string name="title_name">Media Demo</string>
 </resources>
