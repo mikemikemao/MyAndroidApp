@@ -1,33 +1,18 @@
 package com.hikvision.mediademo;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-
-
 import com.hikvision.mediademo.permission.CheckPermissionActivity;
 
-import java.io.File;
-import java.io.InputStream;
+
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "pirate";
-    ImageView iv;
-
-    Button btn_showImg;
-    Button btn_showSVImg;
-    Button btn_showVImg;
+    private static final String TAG = "MainActivity";
+    Button btn_imgOperation;
+    Button btn_audioOperation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,33 +24,18 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
+        btn_imgOperation=(Button)findViewById(R.id.btn_imgOpration);
+        btn_audioOperation=(Button)findViewById(R.id.btn_audioOpration);
+        btn_imgOperation.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,ShowImgActivity.class);
+            startActivity(intent);
 
-        btn_showImg=(Button)findViewById(R.id.btn_showImg);
-        btn_showSVImg=(Button)findViewById(R.id.btn_showSVImg);
-        btn_showVImg=(Button)findViewById(R.id.btn_show_VImg);
-
-        btn_showImg.setOnClickListener(v -> {
-            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getPath() +
-                    File.separator + "11.jpg");
-            //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
-            iv=(ImageView)findViewById(R.id.imageView);
-            iv.setImageBitmap(bitmap);
         });
+        btn_audioOperation.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,AudioOperationActivity.class);
+            startActivity(intent);
 
-        btn_showSVImg.setOnClickListener(v -> {
-            
         });
-
-        btn_showVImg.setOnClickListener(v -> {
-            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getPath() +
-                    File.separator + "11.jpg");
-            //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
-            iv=(ImageView)findViewById(R.id.imageView);
-            iv.setImageBitmap(bitmap);
-        });
-
     }
-
-
 
 }

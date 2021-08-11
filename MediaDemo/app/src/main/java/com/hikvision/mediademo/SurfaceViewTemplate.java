@@ -27,6 +27,11 @@ public class SurfaceViewTemplate extends SurfaceView implements SurfaceHolder.Ca
     private int y;
     private Path mPath = new Path();
     private Paint mPaint = new Paint();
+    public SurfaceHolder getmHolder() {
+        return mHolder;
+    }
+
+
 
     public SurfaceViewTemplate(Context context) {
         super(context);
@@ -44,6 +49,7 @@ public class SurfaceViewTemplate extends SurfaceView implements SurfaceHolder.Ca
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
+        mHolder=holder;
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);

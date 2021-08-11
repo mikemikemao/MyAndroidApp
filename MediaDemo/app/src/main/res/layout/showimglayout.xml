@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg">
+
+      <ImageView
+          android:id="@+id/imageView"
+          android:layout_width="match_parent"
+          android:layout_height="100dp" />
+
+      <com.hikvision.mediademo.SurfaceViewTemplate
+          android:layout_width="match_parent"
+          android:layout_height="100dp"/>
+
+      <com.hikvision.mediademo.Myview
+          android:layout_width="match_parent"
+          android:layout_height="100dp"/>
+
+      <Button
+          android:id="@+id/btn_showImg"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/button"
+          android:text="@string/btn_showImg" />
+
+      <Button
+          android:id="@+id/btn_showSVImg"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/button"
+          android:text="@string/btn_showSVImg" />
+
+      <Button
+          android:id="@+id/btn_show_VImg"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/button"
+          android:text="@string/btn_showVImg" />
+
+</LinearLayout>

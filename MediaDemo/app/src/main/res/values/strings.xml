@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">MediaDemo</string>
     <string name="err_permission">Permission Error</string>
+    <string name="btn_imgOpration">imgOpration</string>
+    <string name="btn_audioOpration">audioOpration</string>
     <string name="btn_showImg">showImg</string>
     <string name="btn_showSVImg">showSVImg</string>
     <string name="btn_showVImg">showVImg</string>
+    <string name="btn_playRecord">playRecord</string>
+    <string name="btn_cancelRecord">cancelRecord</string>
+    <string name="text_result">Result</string>
+    <string name="title_name">Media Demo</string>
 </resources>

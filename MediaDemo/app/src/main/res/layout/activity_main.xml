@@ -5,38 +5,44 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context="com.hikvision.mediademo.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+    <!-- 标题 -->
 
-    <com.hikvision.mediademo.SurfaceViewTemplate
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
 
-    <com.hikvision.mediademo.Myview
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/title_name"
+            android:textColor="#00f"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+
+
 
     <Button
-        android:id="@+id/btn_showImg"
+        android:id="@+id/btn_imgOpration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_showImg" />
-
+        android:background="@drawable/button"
+        android:text="@string/btn_imgOpration" />
     <Button
-        android:id="@+id/btn_showSVImg"
+        android:id="@+id/btn_audioOpration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_showSVImg" />
-
-    <Button
-        android:id="@+id/btn_show_VImg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_showVImg" />
+        android:background="@drawable/button"
+        android:text="@string/btn_audioOpration" />
 
 
-</LinearLayout>
+
+
+  </LinearLayout>
