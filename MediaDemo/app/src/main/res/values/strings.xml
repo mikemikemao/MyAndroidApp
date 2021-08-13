@@ -7,6 +7,7 @@
     <string name="btn_showSVImg">showSVImg</string>
     <string name="btn_showVImg">showVImg</string>
     <string name="btn_playRecord">playRecord</string>
+    <string name="btn_capRecord">capRecord</string>
     <string name="btn_cancelRecord">cancelRecord</string>
     <string name="btn_capSoRecord">capSoRecord</string>
     <string name="text_result">Result</string>

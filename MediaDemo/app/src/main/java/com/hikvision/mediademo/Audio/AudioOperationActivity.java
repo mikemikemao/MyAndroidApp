@@ -1,4 +1,4 @@
-package com.hikvision.mediademo;
+package com.hikvision.mediademo.Audio;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.hikvision.mediademo.Audio.MyAudioRecord;
+import com.hikvision.mediademo.R;
 import com.hikvision.mediademo.log.MXLog;
 import com.manager.Manager;
 
@@ -25,13 +25,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 public class AudioOperationActivity extends Activity {
 
     Button btn_PlayRecord;
     Button btn_cancelRecord;
     Button btn_capSoRecord;
+    Button btn_capRecord;
     boolean isRecording=false;
     Manager manager;
 
@@ -48,20 +48,21 @@ public class AudioOperationActivity extends Activity {
     private static final int STOP_DLG_MSG     = 6;    // 结束提示对话框
     private static final int CLEAR_MSG        = 7;    // 清空日志信息
 
-    private ProgressDialog m_progressDlg    = null;
-    private AudioRecordThread m_AudioRecordThread       = null;
+    private ProgressDialog                  m_progressDlg             = null;
+    private AudioRecordThread               m_AudioRecordThread       = null;
+    private AudioPlayRecordThread           m_AudioPlayRecordThread   = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.audio_opration_layout);
 
-
-        btn_PlayRecord=(Button)findViewById(R.id.btn_playRecord);
+        btn_capRecord=(Button)findViewById(R.id.btn_capRecord);
         btn_cancelRecord=(Button)findViewById(R.id.btn_cancelRecord);
         btn_capSoRecord=(Button) findViewById(R.id.btn_capSoRecord);
+        btn_PlayRecord=(Button)findViewById(R.id.btn_playRecord);
 
-        btn_PlayRecord.setOnClickListener(v -> {
+        btn_capRecord.setOnClickListener(v -> {
             if (m_AudioRecordThread != null) {
                 m_AudioRecordThread.interrupt();
                 m_AudioRecordThread = null;
@@ -80,10 +81,26 @@ public class AudioOperationActivity extends Activity {
             manager.zzAudioRecord();///无取消
 
         });
+
+        btn_PlayRecord.setOnClickListener(v -> {
+            if (m_AudioPlayRecordThread != null) {
+                m_AudioPlayRecordThread.interrupt();
+                m_AudioPlayRecordThread = null;
+            }
+            m_AudioPlayRecordThread = new AudioPlayRecordThread();
+            m_AudioPlayRecordThread.start();
+        });
+    }
+    //播放录音线程
+    private class AudioPlayRecordThread extends Thread {
+        public void run() {
+
+        }
+
     }
 
 
-
+    //录音线程
     private class AudioRecordThread extends Thread {
         public void run() {
             audioRecord();
@@ -137,10 +154,13 @@ public class AudioOperationActivity extends Activity {
                 //写 wav 格式数据
                 wavFos.write(data, 0, read);
             }
+            if(audioRecord!=null){
+                //录制结束
+                audioRecord.stop();
+                audioRecord.release();
+                audioRecord = null;
+            }
 
-            //录制结束
-            audioRecord.stop();
-            audioRecord.release();
             wavFos.flush();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

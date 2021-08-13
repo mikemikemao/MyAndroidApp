@@ -56,11 +56,11 @@
     <!-- 功能区 -->
 
     <Button
-        android:id="@+id/btn_playRecord"
+        android:id="@+id/btn_capRecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="@string/btn_playRecord" />
+        android:text="@string/btn_capRecord" />
 
     <Button
         android:id="@+id/btn_cancelRecord"
@@ -75,6 +75,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:text="@string/btn_capSoRecord" />
+
+    <Button
+        android:id="@+id/btn_playRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="@string/btn_playRecord" />
 
 
 

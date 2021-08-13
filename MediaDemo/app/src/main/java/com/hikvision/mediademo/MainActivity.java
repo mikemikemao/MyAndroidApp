@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+
+import com.hikvision.mediademo.Audio.AudioOperationActivity;
 import com.hikvision.mediademo.permission.CheckPermissionActivity;
 
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
         btn_audioOperation.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,AudioOperationActivity.class);
+            Intent intent = new Intent(MainActivity.this, AudioOperationActivity.class);
             startActivity(intent);
 
         });

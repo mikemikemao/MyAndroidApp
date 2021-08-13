@@ -40,7 +40,7 @@
             android:label="@string/app_name"
             />
         <activity
-            android:name=".AudioOperationActivity"
+            android:name=".Audio.AudioOperationActivity"
             android:label="@string/app_name"
             tools:ignore="DuplicateActivity" />
     </application>
