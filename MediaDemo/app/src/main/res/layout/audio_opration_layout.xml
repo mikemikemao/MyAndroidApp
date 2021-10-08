@@ -54,34 +54,46 @@
         </LinearLayout>
     </ScrollView>
     <!-- 功能区 -->
-
-    <Button
-        android:id="@+id/btn_capRecord"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="@string/btn_capRecord" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_capRecord"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:textAllCaps="false"
+            android:text="@string/btn_capRecord" />
 
-    <Button
-        android:id="@+id/btn_cancelRecord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="@string/btn_cancelRecord" />
+        <Button
+            android:id="@+id/btn_cancelRecord"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:textAllCaps="false"
+            android:text="@string/btn_cancelRecord" />
 
-    <Button
-        android:id="@+id/btn_capSoRecord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="@string/btn_capSoRecord" />
+        <Button
+            android:id="@+id/btn_playRecord"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            android:text="@string/btn_playRecord" />
 
-    <Button
-        android:id="@+id/btn_playRecord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="@string/btn_playRecord" />
+        <Button
+            android:id="@+id/btn_getvoiceDB"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            android:text="@string/btn_getVoiceDB" />
+    </LinearLayout>
 
 
 

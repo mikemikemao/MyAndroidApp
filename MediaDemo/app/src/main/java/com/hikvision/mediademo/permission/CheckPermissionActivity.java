@@ -20,21 +20,12 @@ public class CheckPermissionActivity extends Activity {
     private static final String[] REQUEST_PERMISSIONS = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
-//            Manifest.permission.MANAGE_EXTERNAL_STORAGE,
-//            Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.RECORD_AUDIO
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            // new一个intent转到系统设置界面
-//            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-//            intent.setData(Uri.parse("package:" + getPackageName()));
-//            // 1024为REQUEST_CODE
-//            startActivityForResult(intent, 1024);
-//        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
             intent.setData(Uri.parse("package:" + this.getPackageName()));

@@ -1,2 +1,3 @@
 rootProject.name = "MediaDemo"
 include ':app'
+include ':ffmpeg'

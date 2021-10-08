@@ -10,11 +10,11 @@
           android:layout_width="match_parent"
           android:layout_height="100dp" />
 
-      <com.hikvision.mediademo.SurfaceViewTemplate
+      <com.hikvision.mediademo.Media.SurfaceViewTemplate
           android:layout_width="match_parent"
           android:layout_height="100dp"/>
 
-      <com.hikvision.mediademo.Myview
+      <com.hikvision.mediademo.Media.Myview
           android:layout_width="match_parent"
           android:layout_height="100dp"/>
 

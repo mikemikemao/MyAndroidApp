@@ -2,39 +2,39 @@ package com.hikvision.mediademo.Audio;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.media.AudioDeviceInfo;
 import android.media.AudioFormat;
+import android.media.AudioManager;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.hikvision.mediademo.log.MXLog;
+
+
 import androidx.annotation.Nullable;
 
 import com.hikvision.mediademo.R;
-import com.hikvision.mediademo.log.MXLog;
-import com.manager.Manager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class AudioOperationActivity extends Activity {
-
-    Button btn_PlayRecord;
-    Button btn_cancelRecord;
-    Button btn_capSoRecord;
-    Button btn_capRecord;
+public class AudioOperationActivity extends Activity implements View.OnClickListener {
+    private static final String TAG = "AudioOperationActivity";
     boolean isRecording=false;
-    Manager manager;
-
     private AudioRecord audioRecord = null; // 声明 AudioRecord 对象
     private int recordBufSize = 0; // 声明recoordBufffer的大小字段private
     private static final String PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/mediaDemo";
@@ -56,41 +56,53 @@ public class AudioOperationActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.audio_opration_layout);
+        findViewById(R.id.btn_capRecord).setOnClickListener(this);
+        findViewById(R.id.btn_cancelRecord).setOnClickListener(this);
+        findViewById(R.id.btn_playRecord).setOnClickListener(this);
+        findViewById(R.id.btn_getvoiceDB).setOnClickListener(this);
 
-        btn_capRecord=(Button)findViewById(R.id.btn_capRecord);
-        btn_cancelRecord=(Button)findViewById(R.id.btn_cancelRecord);
-        btn_capSoRecord=(Button) findViewById(R.id.btn_capSoRecord);
-        btn_PlayRecord=(Button)findViewById(R.id.btn_playRecord);
-
-        btn_capRecord.setOnClickListener(v -> {
-            if (m_AudioRecordThread != null) {
-                m_AudioRecordThread.interrupt();
-                m_AudioRecordThread = null;
-            }
-            m_AudioRecordThread = new AudioRecordThread();
-            m_AudioRecordThread.start();
-        });
-
-        btn_cancelRecord.setOnClickListener(v -> {
-            isRecording=true;
-
-        });
-
-        btn_capSoRecord.setOnClickListener(v -> {
-            manager=new Manager();
-            manager.zzAudioRecord();///无取消
-
-        });
-
-        btn_PlayRecord.setOnClickListener(v -> {
-            if (m_AudioPlayRecordThread != null) {
-                m_AudioPlayRecordThread.interrupt();
-                m_AudioPlayRecordThread = null;
-            }
-            m_AudioPlayRecordThread = new AudioPlayRecordThread();
-            m_AudioPlayRecordThread.start();
-        });
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_capRecord:
+                zzAudioRecord();
+                break;
+            case R.id.btn_cancelRecord:
+                //isRecording=true;
+                AudioManager manager = (AudioManager)getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+                manager.setParameters("audio_devices_out_active=AUDIO_CODEC");
+                break;
+            case R.id.btn_playRecord:
+                zzAudioTrack();
+                break;
+            case R.id.btn_getvoiceDB:
+                AudioManager audioManager = (AudioManager) getSystemService(this.AUDIO_SERVICE);
+                int minIndex = audioManager.getStreamMinVolume (AudioManager.STREAM_MUSIC);
+                int maxIndex = audioManager.getStreamMaxVolume (AudioManager.STREAM_MUSIC);
+                for(int i=minIndex; i<maxIndex; i++) {
+                    float db = audioManager.getStreamVolumeDb(AudioManager.STREAM_MUSIC, i, AudioDeviceInfo.TYPE_WIRED_HEADSET);
+                    Log.d(TAG, "volume db = " + db + "  at index= " + i);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void zzAudioRecord(){
+        if (m_AudioRecordThread != null) {
+            m_AudioRecordThread.interrupt();
+            m_AudioRecordThread = null;
+        }
+        m_AudioRecordThread = new AudioRecordThread();
+        m_AudioRecordThread.start();
+    }
+
+    public void zzAudioTrack(){
+    }
+
     //播放录音线程
     private class AudioPlayRecordThread extends Thread {
         public void run() {

@@ -1,4 +1,4 @@
-package com.hikvision.mediademo;
+package com.hikvision.mediademo.Media;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.hikvision.mediademo.R;
+
 public class Myview extends View {
     Paint paint = new Paint();
     Bitmap bitmap;
@@ -15,7 +17,7 @@ public class Myview extends View {
         super(context);
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
-        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bg);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
     }
     // 如果View是在.xml里声明的，则调用第二个构造函数
     // 自定义属性是从AttributeSet参数传进来的

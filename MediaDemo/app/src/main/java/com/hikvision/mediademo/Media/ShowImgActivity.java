@@ -1,18 +1,17 @@
-package com.hikvision.mediademo;
+package com.hikvision.mediademo.Media;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
-import com.hikvision.mediademo.permission.CheckPermissionActivity;
+import com.hikvision.mediademo.R;
 
 import java.io.File;
 
@@ -24,7 +23,6 @@ public class ShowImgActivity extends Activity {
     Button btn_showSVImg;
     Button btn_showVImg;
     ImageView iv;
-    SurfaceViewTemplate surfaceViewTemplate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +42,7 @@ public class ShowImgActivity extends Activity {
         });
 
         btn_showSVImg.setOnClickListener(v -> {
+
         });
 
         btn_showVImg.setOnClickListener(v -> {
