@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
         btn_audioOperation.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            Intent intent = new Intent(MainActivity.this, AudioOperationActivity.class);
             startActivity(intent);
 
         });

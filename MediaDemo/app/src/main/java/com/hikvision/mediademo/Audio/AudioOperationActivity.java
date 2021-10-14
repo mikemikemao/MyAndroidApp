@@ -163,6 +163,7 @@ public class AudioOperationActivity extends Activity implements View.OnClickList
                     SendMsg(FAILED_MSG,"read failed ret="+read);
                     return;
                 }
+                Log.d(TAG,"recorData:"+data[0]+" "+data[1]+" "+data[2]+" "+data[3]);
                 //写 wav 格式数据
                 wavFos.write(data, 0, read);
             }
