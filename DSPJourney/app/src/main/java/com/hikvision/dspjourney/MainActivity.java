@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.hikvision.dspjourney.Image.ImageActivity;
+import com.hikvision.dspjourney.camera.CameraActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.tv_image).setOnClickListener(this);
+        findViewById(R.id.tv_camera).setOnClickListener(this);
     }
 
     @Override
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_image:
                 targetClass = ImageActivity.class;
                 break;
+            case R.id.tv_camera:
+                targetClass = CameraActivity.class;
             default:
                 break;
         }

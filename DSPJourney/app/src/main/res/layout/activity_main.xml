@@ -12,5 +12,11 @@
         android:layout_height="wrap_content"
         style="@style/itemMargin"
         android:text="三种方式绘制图片>"/>
+    <TextView
+        android:id="@+id/tv_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/itemMargin"
+        android:text="Camera视频采集"/>
 
 </LinearLayout>
