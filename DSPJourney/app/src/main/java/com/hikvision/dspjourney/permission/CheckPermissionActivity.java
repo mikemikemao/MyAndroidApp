@@ -31,7 +31,7 @@ public class CheckPermissionActivity extends Activity {
             Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
             intent.setData(Uri.parse("package:" + this.getPackageName()));
             // 1024为REQUEST_CODE
-            startActivityForResult(intent, 1024);
+            //startActivityForResult(intent, 1024);
             requestPermissions(REQUEST_PERMISSIONS, REQUEST_CODE_ASK_PERMISSIONS);
         }
     }

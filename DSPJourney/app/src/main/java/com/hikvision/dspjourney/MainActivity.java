@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.hikvision.dspjourney.Image.ImageActivity;
 import com.hikvision.dspjourney.camera.CameraActivity;
+import com.hikvision.dspjourney.opengl.GlSurfaceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.tv_image).setOnClickListener(this);
         findViewById(R.id.tv_camera).setOnClickListener(this);
+        findViewById(R.id.tv_glsurfaceview).setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tv_camera:
                 targetClass = CameraActivity.class;
+            case R.id.tv_glsurfaceview:
+                targetClass = GlSurfaceActivity.class;
             default:
                 break;
         }

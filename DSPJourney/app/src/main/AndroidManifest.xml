@@ -15,6 +15,7 @@
         android:name=".MyApplication"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.DSPJourney">
         <activity android:name=".permission.CheckPermissionActivity">
@@ -30,6 +31,7 @@
             android:label="@string/app_name" />
         <activity android:name=".Image.ImageActivity"/>
         <activity android:name=".camera.CameraActivity"/>
+        <activity android:name=".opengl.GlSurfaceActivity"/>
 
     </application>
 

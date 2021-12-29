@@ -19,4 +19,12 @@
         style="@style/itemMargin"
         android:text="Camera视频采集"/>
 
+    <TextView
+        android:id="@+id/tv_glsurfaceview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/itemMargin"
+        android:text="glSurfaceView"/>
+
+
 </LinearLayout>
