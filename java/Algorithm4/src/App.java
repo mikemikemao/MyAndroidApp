@@ -4,6 +4,7 @@ public class App {
         //launch.json 带参数 tinyAllowlist.txt
         //BinarySearch.test(args);
         //RandomSeq.test(args);
-        Knuth.test(args);
+        //Knuth.test(args);
+        ThreeSum.test(args);
     }
 }
