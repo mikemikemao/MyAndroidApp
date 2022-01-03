@@ -5,6 +5,7 @@ public class App {
         //BinarySearch.test(args);
         //RandomSeq.test(args);
         //Knuth.test(args);
-        ThreeSum.test(args);
+        //ThreeSum.test(args);
+        QuickFindUF.test(args);
     }
 }
