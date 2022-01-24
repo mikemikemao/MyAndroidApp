@@ -1,5 +1,3 @@
-import edu.princeton.cs.algs4.Shell;
-import edu.princeton.cs.algs4.StdOut;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -7,8 +5,9 @@ public class App {
         //BinarySearch.test(args);
         //RandomSeq.test(args);
         //Knuth.test(args);
-        //ThreeSum.test(args);
+        //ThreeSum.main(args);
         //QuickFindUF.test(args);
+        System.out.println(args[0]);
         Shell.main(args);
     }
 }

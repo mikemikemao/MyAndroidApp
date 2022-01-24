@@ -1,4 +1,3 @@
-
 /******************************************************************************
  *  Compilation:  javac ThreeSum.java
  *  Execution:    java ThreeSum input.txt
@@ -27,10 +26,6 @@
  ******************************************************************************/
 
 
-
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Stopwatch;
 
 /**
  *  The {@code ThreeSum} class provides static methods for counting
@@ -100,7 +95,7 @@ public class ThreeSum {
      *
      * @param args the command-line arguments
      */
-    public static void test(String[] args)  { 
+    public static void main(String[] args)  { 
         In in = new In(args[0]);
         int[] a = in.readAllInts();
 

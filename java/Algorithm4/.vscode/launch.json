@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
-            "args": ["${fileDirname}\\test\\tiny.txt"],
+            "args": ["${fileDirname}\\test\\1Kints.txt"],
             "mainClass": "${file}"
         },
         {
