@@ -328,7 +328,7 @@ public final class StdIn {
      */
     public static String readAll() {
         if (!scanner.hasNextLine())
-            return "";
+           return "";
 
         String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
         // not that important to reset delimeter, since now scanner is empty
