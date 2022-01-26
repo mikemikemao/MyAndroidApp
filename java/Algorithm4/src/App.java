@@ -8,6 +8,7 @@ public class App {
         //ThreeSum.main(args);
         //QuickFindUF.test(args);
         System.out.println(args[0]);
-        Shell.main(args);
+        //Shell.main(args);
+        Merge.main(args);
     }
 }
