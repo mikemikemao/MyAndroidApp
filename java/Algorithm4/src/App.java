@@ -9,6 +9,6 @@ public class App {
         //QuickFindUF.test(args);
         System.out.println(args[0]);
         //Shell.main(args);
-        Merge.main(args);
+        Quick.main(args);
     }
 }
