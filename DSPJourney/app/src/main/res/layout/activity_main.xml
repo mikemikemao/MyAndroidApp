@@ -32,5 +32,12 @@
         style="@style/itemMargin"
         android:text="AudioTrack"/>
 
+    <TextView
+        android:id="@+id/tv_h264"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/itemMargin"
+        android:text="h264"/>
+
 
 </LinearLayout>

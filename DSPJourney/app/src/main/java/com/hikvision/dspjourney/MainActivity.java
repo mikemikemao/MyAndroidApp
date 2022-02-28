@@ -9,6 +9,7 @@ import android.view.View;
 import com.hikvision.dspjourney.Image.ImageActivity;
 import com.hikvision.dspjourney.audio.AudioTrackActivity;
 import com.hikvision.dspjourney.camera.CameraActivity;
+import com.hikvision.dspjourney.mediacodec.H264Activity;
 import com.hikvision.dspjourney.opengl.GlSurfaceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.tv_camera).setOnClickListener(this);
         findViewById(R.id.tv_glsurfaceview).setOnClickListener(this);
         findViewById(R.id.tv_audiotrack).setOnClickListener(this);
+        findViewById(R.id.tv_h264).setOnClickListener(this);
     }
 
     @Override
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tv_audiotrack:
                 targetClass = AudioTrackActivity.class;
+            case R.id.tv_h264:
+                targetClass = H264Activity.class;
             default:
                 break;
         }

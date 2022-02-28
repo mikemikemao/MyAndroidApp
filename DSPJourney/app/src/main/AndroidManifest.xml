@@ -32,6 +32,7 @@
         <activity android:name=".Image.ImageActivity"/>
         <activity android:name=".camera.CameraActivity"/>
         <activity android:name=".opengl.GlSurfaceActivity"/>
+        <activity android:name=".mediacodec.H264Activity"/>
 
     </application>
 
